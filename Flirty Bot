@@ -19,7 +19,7 @@ def handle_message(update, context):
     update.message.reply_text(response)
 
 def main():
-    TOKEN = 8334358602:AAH8bpzmSPCXtBrdyaKgTvK4f4ZUevTGbQA
+    TOKEN = 8369251958:AAEk15UhHLCyOf8KzzvIdbHPuTDIUPelef8
 
     updater = Updater(TOKEN, use_context=True)
     dp = updater.dispatcher
