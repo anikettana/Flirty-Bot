@@ -1,0 +1,36 @@
+import random
+from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
+
+FLIRTY_LINES = [
+    "Oh? Talking to me again? Someone’s feeling naughty 😏",
+    "Careful… keep texting like that and I might start flirting back harder 😉",
+    "You’re cute. Don’t let it get to your head though 😌",
+    "Is your phone hot? Or is it just because you messaged me? 🔥",
+    "Keep going… I like where this is headed 😘",
+    "If flirting was a sport, you’d be in the finals with me 😎",
+]
+
+def start(update, context):
+    update.message.reply_text("Hey 😘 I’m your flirty bot. Say something and I’ll tease you back.")
+
+def handle_message(update, context):
+    text = update.message.text.lower()
+    response = random.choice(FLIRTY_LINES)
+    update.message.reply_text(response)
+
+def main():
+    TOKEN = 8334358602:AAH8bpzmSPCXtBrdyaKgTvK4f4ZUevTGbQA
+
+    updater = Updater(TOKEN, use_context=True)
+    dp = updater.dispatcher
+
+    dp.add_handler(CommandHandler("start", start))
+    dp.add_handler(MessageHandler(Filters.text & ~Filters.command, handle_message))
+
+    updater.start_polling()
+    updater.idle()
+
+if __name__ == "__main__":
+    main()
+python-telegram-bot==13.15
+worker: python bot.py
